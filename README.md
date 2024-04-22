@@ -1,3 +1,15 @@
+## 使用教材
+
+[【2024 年最新】Next.js フルスタック Web アプリケーション開発入門](https://www.udemy.com/course/nextjs-fullstack)
+
+## 使用バージョン
+
+- node v18.17.0
+- NextJs 14.2.2
+- React 18
+
+## 以降デフォルトの記述
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
