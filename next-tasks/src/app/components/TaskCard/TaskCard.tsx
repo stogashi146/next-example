@@ -16,19 +16,20 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
         <h1 className="text-lg font-semibold">{task.title}</h1>
         <div className="mt-1 text-sm line-clamp-3">{task.description}</div>
       </header>
-      <div className="text-sm">{task.dueDate}</div>
-      <div className="flex justify-between items-center">
-        <div
-          className={`mt-1 text-sm px-2 py-1 w-24 text-center text-white rounded-full shadow-sm ${
-            task.isCompleted ? "bg-green-500" : "bg-red-500"
-          }`}
-        >
-          {true ? "Completed" : "Incomplete"}
-        </div>
-        <div className="flex gap-4">
-          <TaskEditButton id={task._id} />
-          <TaskDeleteButton id={task._id} />
-          <div>削除</div>
+      <div>
+        <div className="text-sm">{task.dueDate}</div>
+        <div className="flex justify-between items-center">
+          <div
+            className={`mt-1 text-sm px-2 py-1 w-24 text-center text-white rounded-full shadow-sm ${
+              task.isCompleted ? "bg-green-500" : "bg-red-500"
+            }`}
+          >
+            {true ? "Completed" : "Incomplete"}
+          </div>
+          <div className="flex gap-4">
+            <TaskEditButton id={task._id} />
+            <TaskDeleteButton id={task._id} />
+          </div>
         </div>
       </div>
     </div>
