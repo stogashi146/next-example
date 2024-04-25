@@ -11,7 +11,7 @@ const MainLayout = ({
     <div className="flex h-screen">
       <SideMenu />
       {/* 横幅一杯に広げる、スクロールできるようにする */}
-      <main className="bg-red-300 flex-1 overflow-auto">{children}</main>
+      <main className="bg-slate-50  flex-1 overflow-auto">{children}</main>
     </div>
   );
 };
