@@ -2,8 +2,8 @@ import TaskCard from "@/app/components/TaskCard/TaskCard";
 import { TaskDocument } from "@/models/task";
 import React from "react";
 
-const getExpiredTasks = async (): Promise<TaskDocument[]> => {
-  const response = await fetch(`${process.env.API_URL}/tasks/expired`, {
+const getCompletedTasks = async (): Promise<TaskDocument[]> => {
+  const response = await fetch(`${process.env.API_URL}/tasks/completed`, {
     cache: "no-store",
   });
 
@@ -15,16 +15,17 @@ const getExpiredTasks = async (): Promise<TaskDocument[]> => {
   return data.tasks as TaskDocument[];
 };
 
-const ExpiredTaskPage = async () => {
-  const expiredTasks = await getExpiredTasks();
-
+const CompletedTaskPage = async () => {
+  const tasks = await getCompletedTasks();
   return (
     <div className="text-gray-800 p-8 h-full overflow-y-auto pb-24">
       <header className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold flex items-center">Expired Tasks</h1>
+        <h1 className="text-2xl font-bold flex items-center">
+          Completed Tasks
+        </h1>
       </header>
       <div className="mt-8 flex flex-wrap gap-4">
-        {expiredTasks.map((task) => (
+        {tasks.map((task) => (
           <TaskCard key={task.id} task={task} />
         ))}
       </div>
@@ -32,4 +33,4 @@ const ExpiredTaskPage = async () => {
   );
 };
 
-export default ExpiredTaskPage;
+export default CompletedTaskPage;
