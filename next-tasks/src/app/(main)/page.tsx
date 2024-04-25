@@ -1,8 +1,25 @@
 import Link from "next/link";
 import { MdAddTask } from "react-icons/md";
 import TaskCard from "../components/TaskCard/TaskCard";
+import { TaskDocument } from "@/models/task";
 
-export default function MainPage() {
+const getAllTasks = async (): Promise<TaskDocument[]> => {
+  const response = await fetch(`${process.env.API_URL}/tasks`, {
+    cache: "no-store",
+  });
+
+  if (response.status !== 200) {
+    throw new Error();
+  }
+
+  const data = await response.json();
+  return data.tasks as TaskDocument[];
+};
+
+export default async function MainPage() {
+  const allTasks = await getAllTasks();
+  console.log(allTasks);
+
   return (
     <div className="text-gray-800 p-8 h-full overflow-y-auto pb-24">
       <header className="flex justify-between items-center">
@@ -15,7 +32,11 @@ export default function MainPage() {
           <div className=" flex flex-wrap gap-4">Add Task</div>
         </Link>
       </header>
-      <TaskCard />
+      <div className="mt-8 flex flex-wrap gap-4">
+        {allTasks.map((task) => (
+          <TaskCard key={task.id} task={task} />
+        ))}
+      </div>
     </div>
   );
 }
