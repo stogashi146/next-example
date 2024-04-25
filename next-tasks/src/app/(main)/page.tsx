@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MdAddTask } from "react-icons/md";
+import TaskCard from "../components/TaskCard/TaskCard";
 
 export default function MainPage() {
   return (
@@ -11,10 +12,10 @@ export default function MainPage() {
           className="flex items-center gap-1 font-semibold border px-4 py-2 rounded-full shadow-sm text-white bg-gray-800 hover:bg-gray-700"
         >
           <MdAddTask className="size-5" />
-          <div className="mt-8 flex flex-wrap gap-4">Add Task</div>
+          <div className=" flex flex-wrap gap-4">Add Task</div>
         </Link>
       </header>
-      <div>Task Card</div>
+      <TaskCard />
     </div>
   );
 }
